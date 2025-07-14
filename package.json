@@ -1,6 +1,6 @@
 {
-  "name": "rishi_portfolio",
-  "homepage": "https://rishi200201.github.io/rishi_portfolio",
+  "name": "fine_click",
+  "homepage": "https://fineclickphotography.github.io/fine_click",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,8 +13,13 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
     "@tailwindcss/vite": "^4.0.0",
     "emailjs-com": "^3.2.0",
+    "framer-motion": "^12.23.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^4.0.0"

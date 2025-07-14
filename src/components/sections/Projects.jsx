@@ -1,133 +1,144 @@
-import { RevealOnScroll } from "../RevealOnScroll";
+import React from "react";
+import { Box, Container, Typography, Button, Stack, Paper } from "@mui/material";
+
+import babyBirthday from "../../assets/DSC01834-BNiwbCx4.jpg";
+import modelPhotoshoot from "../../assets/IMG_4323-Dxh5C1id.jpg";
+import marriagePhotoshoot from "../../assets/DSC02154-D7aGm7xC.jpg";
 
 export const Projects = () => {
+  const openDrive = () => {
+    window.open(
+      "https://drive.google.com/drive/folders/1TkEGPXBgSKvRKM_N4r8IJo6nu5P8_8ys",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  const projects = [
+    { title: "Baby Birthday", imageUrl: babyBirthday },
+    { title: "Model Photoshoot", imageUrl: modelPhotoshoot },
+    { title: "Marriage Photoshoot", imageUrl: marriagePhotoshoot },
+  ];
+
   return (
-    <section
-      id="projects" // The section ID to target in the page (for navigation or linking)
-      className="min-h-screen flex items-center justify-center py-20 bg-[#101010]" // Full-screen height, center content, padding, and background color
+    <Box
+      id="projects"
+      sx={{
+        minHeight: "100vh",
+        py: { xs: 8, md: 12 },
+        bgcolor: "#0a0a0a",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        px: 2,
+      }}
     >
-      <RevealOnScroll> 
-        {/* RevealOnScroll component handles the animation when the section is revealed on scroll */}
-        
-        <div className="max-w-5xl mx-auto px-4"> 
-          {/* Container for the section, limits the width to 'max-w-5xl' and adds padding on sides */}
+      <Container maxWidth="lg" sx={{ textAlign: "center" }}>
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 900,
+            mb: { xs: 6, md: 8 },
+            fontFamily: "'Montserrat', sans-serif",
+            background: "linear-gradient(90deg, #ff0066, #00ccff)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            letterSpacing: 2,
+          }}
+        >
+          Projects
+        </Typography>
 
-          <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,204,255)] bg-clip-text text-transparent text-center">
-            {/* Heading for the "Featured Projects" section with gradient text */}
-            Featured Projects
-          </h2>
-
-          {/* Projects grid container */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Grid layout with 1 column for small screens and 2 columns for medium and larger screens */}
-
-            {/* E-Commerce Web App Card */}
-            <div
-              className="
-              p-6 rounded-xl border border-white/10 
-              hover:-translate-y-1 hover:border-[rgb(255,0,102)]/30
-              hover:shadow-[0_4px_20px_rgba(255,0,102,0.1)]
-              transition-all bg-[rgb(15,10,20)] hover:bg-[rgb(30,10,30)]
-            "
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: 6, sm: 8 }}
+          justifyContent="center"
+          alignItems="stretch"
+        >
+          {projects.map(({ title, imageUrl }, index) => (
+            <Paper
+              key={index}
+              elevation={8}
+              sx={{
+                width: { xs: "100%", sm: 320 },
+                borderRadius: 3,
+                overflow: "hidden",
+                cursor: "pointer",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                boxShadow:
+                  "0 10px 20px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2)",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow:
+                    "0 20px 40px rgba(255, 0, 102, 0.5), 0 10px 20px rgba(0, 204, 255, 0.5)",
+                },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                bgcolor: "#121212",
+                px: 1,
+                py: 2,
+              }}
+              onClick={() => window.open(imageUrl, "_blank")}
+              aria-label={`View project: ${title}`}
             >
-              {/* Card styles, including padding, border, hover effects (e.g., slight movement, color change), and background color */}
-              
-              <h3 className="text-2xl font-bold mb-2 text-white">
-                E-Commerce Web App
-              </h3>
-              {/* Card title with white color and margin at the bottom */}
+              <Box
+                component="img"
+                src={imageUrl}
+                alt={title}
+                loading="lazy"
+                sx={{
+                  width: "100%",
+                  height: 220,
+                  objectFit: "cover",
+                  borderRadius: 2,
+                  mb: 2,
+                  filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.7))",
+                  transition: "transform 0.3s ease",
+                }}
+              />
 
-              <p className="text-gray-300 mb-4">
-                Full-stack e-commerce with modern UI, secure payment
-                integration, and customizable product inventory.
-              </p>
-              {/* Description of the project with a lighter text color and bottom margin */}
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "#fff",
+                  fontWeight: 700,
+                  fontFamily: "'Poppins', sans-serif",
+                  letterSpacing: 1,
+                  textTransform: "uppercase",
+                  userSelect: "none",
+                }}
+              >
+                {title}
+              </Typography>
+            </Paper>
+          ))}
+        </Stack>
 
-              {/* Technology tags */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["React.js", "Node", "MongoDB", "Express.js"].map(
-                  (tech) => (
-                    <span
-                      key={tech}
-                      className="
-                      bg-[rgb(255,0,102)]/10 text-[rgb(255,0,102)] py-1 px-3 
-                      rounded-full text-sm
-                      transition
-                      hover:bg-[rgb(255,0,102)]/20 hover:-translate-y-0.5
-                      hover:shadow-[0_2px_8px_rgba(255,0,102,0.2)]
-                    "
-                    >
-                      {tech}
-                    </span>
-                  )
-                )}
-              </div>
-              {/* Loop through the technologies used and display them as tags with hover effects */}
-              
-              <div className="flex justify-between items-center">
-                {/* Container for the "View Project" button */}
-
-                <a
-                  href="#"
-                  className="text-[rgb(0,204,255)] hover:text-[rgb(0,172,204)] transition-colors my-4"
-                >
-                  {/* The link that redirects to the project's page (replace href with the actual URL) */}
-                  {/* View Project → */}
-                </a>
-              </div>
-            </div>
-
-            {/* Real-Time Chat App Card */}
-            <div
-              className="
-              p-6 rounded-xl border border-white/10 
-              hover:-translate-y-1 hover:border-[rgb(0,204,255)]/30
-              hover:shadow-[0_4px_20px_rgba(0,204,255,0.1)]
-              transition-all bg-[rgb(15,10,20)] hover:bg-[rgb(30,10,30)]
-            "
-            >
-              {/* Similar structure as the previous card, but for the Real-Time Chat App */}
-              
-              <h3 className="text-2xl font-bold mb-2 text-white">
-                Real-Time Chat App
-              </h3>
-
-              <p className="text-gray-300 mb-4">
-                Scalable chat platform supporting real-time messaging, presence,
-                and group chat features.
-              </p>
-
-              {/* Technology tags for the second project */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["React.js", "Node", "MongoDB", "Express.js"].map((tech, key) => (
-                  <span
-                    key={key}
-                    className="
-                      bg-[rgb(0,204,255)]/10 text-[rgb(0,204,255)] py-1 px-3 
-                      rounded-full text-sm
-                      transition
-                      hover:bg-[rgb(0,204,255)]/20 hover:-translate-y-0.5
-                      hover:shadow-[0_2px_8px_rgba(0,204,255,0.2)]
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex justify-between items-center">
-                <a
-                  href="#"
-                  className="text-[rgb(0,204,255)] hover:text-[rgb(0,172,204)] transition-colors my-4"
-                >
-                  {/* View Project → */}
-                </a>
-              </div>
-            </div>
-          </div>
-          {/* End of the grid for projects */}
-        </div>
-      </RevealOnScroll>
-    </section>
+        <Button
+          variant="contained"
+          size="large"
+          onClick={openDrive}
+          sx={{
+            mt: { xs: 8, md: 10 },
+            px: 5,
+            py: 1.8,
+            fontWeight: "bold",
+            fontSize: "1.1rem",
+            borderRadius: 3,
+            background: "linear-gradient(90deg, #ff0066, #00ccff)",
+            boxShadow: "0 4px 15px rgba(255, 0, 102, 0.6)",
+            transition: "background 0.3s ease, box-shadow 0.3s ease",
+            "&:hover": {
+              background: "linear-gradient(90deg, #e6005c, #0099cc)",
+              boxShadow: "0 6px 20px rgba(204, 0, 255, 0.7)",
+            },
+          }}
+        >
+          For More, Check Out the Drive
+        </Button>
+      </Container>
+    </Box>
   );
 };
