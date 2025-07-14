@@ -11,10 +11,8 @@ export const Home = () => {
       setAnimationKey((prev) => prev + 1);
     };
 
-    // Replace this with your actual home page link ID or selector
     const homeLink = document.getElementById("home-link");
     homeLink?.addEventListener("click", handleClick);
-
     return () => {
       homeLink?.removeEventListener("click", handleClick);
     };
@@ -22,14 +20,14 @@ export const Home = () => {
 
   return (
     <section
-      key={animationKey} // changing this key remounts and restarts animations
+      key={animationKey}
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-black px-6 md:px-12 text-white overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white px-6 md:px-10 overflow-hidden"
       style={{ fontFamily: "'Playfair Display', serif" }}
     >
-      {/* Subtle floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
+      {/* Decorative Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full bg-yellow-500/20"
@@ -38,46 +36,44 @@ export const Home = () => {
               y: Math.random() * window.innerHeight,
               width: 6,
               height: 6,
-              opacity: 0.4,
+              opacity: 0.3,
             }}
             animate={{
-              y: [0, Math.random() * 40 - 20],
-              x: [0, Math.random() * 40 - 20],
-              opacity: [0.4, 0.6, 0.4],
+              y: [0, Math.random() * 30 - 15],
+              x: [0, Math.random() * 30 - 15],
+              opacity: [0.3, 0.6, 0.3],
             }}
             transition={{
-              duration: 12 + Math.random() * 8,
+              duration: 10 + Math.random() * 6,
               repeat: Infinity,
               repeatType: "reverse",
               ease: "easeInOut",
-              delay: i * 1.2,
+              delay: i * 1.1,
             }}
           />
         ))}
       </div>
 
-      {/* Soft glowing background circles */}
+      {/* Background Glows */}
       <motion.div
-        aria-hidden="true"
-        className="absolute top-24 left-1/4 w-36 h-36 rounded-full bg-yellow-500 opacity-20 blur-2xl -z-10"
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-28 left-1/4 w-40 h-40 rounded-full bg-yellow-400/20 blur-3xl -z-20"
+        animate={{ scale: [1, 1.15, 1] }}
+        transition={{ duration: 10, repeat: Infinity }}
       />
       <motion.div
-        aria-hidden="true"
-        className="absolute bottom-24 right-1/4 w-44 h-44 rounded-full bg-red-600 opacity-15 blur-3xl -z-10"
-        animate={{ scale: [1, 1.15, 1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-24 right-1/4 w-44 h-44 rounded-full bg-red-600/15 blur-3xl -z-20"
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 12, repeat: Infinity, delay: 1 }}
       />
 
-      {/* Content */}
+      {/* Content Block */}
       <motion.div
-        className="z-10 max-w-4xl w-full text-center space-y-10 md:space-y-14"
-        initial={{ opacity: 0, y: 20 }}
+        className="z-10 max-w-5xl w-full text-center space-y-10 md:space-y-14"
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 1 }}
       >
-        {/* Camera Icon with subtle pulse */}
+        {/* Icon */}
         <motion.div
           className="flex justify-center"
           animate={{
@@ -85,7 +81,7 @@ export const Home = () => {
             rotate: [0, 4, 0],
           }}
           transition={{
-            duration: 8,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -98,61 +94,61 @@ export const Home = () => {
               background: "linear-gradient(135deg, #FFD700, #B22222)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              filter: "drop-shadow(0 0 6px rgba(255, 165, 0, 0.6))",
+              filter: "drop-shadow(0 0 6px rgba(255, 165, 0, 0.5))",
             }}
           />
         </motion.div>
 
-        {/* Greeting */}
+        {/* Tagline */}
         <motion.p
-          className="text-yellow-400 font-semibold text-lg sm:text-xl tracking-wide"
+          className="text-yellow-400 text-lg sm:text-xl tracking-wide font-semibold"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+          transition={{ delay: 0.3, duration: 0.8 }}
         >
           Hello Boss, Ready to capture greatness?
         </motion.p>
 
-        {/* Main Heading with subtle glowing text shadow */}
+        {/* Heading */}
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-yellow-400 via-red-500 to-gray-300 bg-clip-text text-transparent select-none"
+          className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight bg-gradient-to-r from-yellow-400 via-red-500 to-white bg-clip-text text-transparent select-none"
           animate={{
             textShadow: [
-              "0 0 8px rgba(255, 215, 0, 0.3)",
-              "0 0 18px rgba(255, 215, 0, 0.6)",
-              "0 0 8px rgba(255, 215, 0, 0.3)",
+              "0 0 10px rgba(255, 215, 0, 0.3)",
+              "0 0 20px rgba(255, 215, 0, 0.6)",
+              "0 0 10px rgba(255, 215, 0, 0.3)",
             ],
           }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 6, repeat: Infinity }}
         >
           Fine Click Photography
         </motion.h1>
 
         {/* Quote */}
         <motion.blockquote
-          className="italic text-gray-400 text-base sm:text-lg max-w-xl mx-auto mt-2 relative py-2"
+          className="italic text-gray-400 text-base sm:text-lg relative py-2 max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.5 }}
         >
-          <span className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent w-3/4 mx-auto" />
+          <span className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
           "Every face tells a story. Every click reveals a legend."
-          <span className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent w-3/4 mx-auto" />
+          <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent" />
         </motion.blockquote>
 
         {/* Description */}
         <motion.p
-          className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto drop-shadow"
+          className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto px-2 drop-shadow"
           initial={{ letterSpacing: 1 }}
           animate={{ letterSpacing: 0.5 }}
-          transition={{ duration: 2, ease: "backOut" }}
+          transition={{ duration: 2 }}
         >
-          Cinematic elegance, bold detail. Weddings, portraits, nightlife — we
-          capture moments with class and soul. Timeless frames. Limitless swagger.
+          Cinematic elegance. Bold storytelling. Whether it's weddings,
+          portraits, or nightlife — we capture emotion with style, finesse, and flair.
         </motion.p>
 
         {/* Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 pt-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-8 pt-4">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
               href="#projects"
@@ -166,12 +162,11 @@ export const Home = () => {
                 py: 1.5,
                 borderRadius: 9999,
                 textTransform: "none",
-                boxShadow: "0 0 20px rgba(255,215,0,0.3)",
+                boxShadow: "0 0 18px rgba(255,215,0,0.3)",
                 "&:hover": {
                   background: "linear-gradient(to right, #FFEB3B, #A52A2A)",
-                  boxShadow: "0 0 30px rgba(255,215,0,0.5)",
+                  boxShadow: "0 0 28px rgba(255,215,0,0.4)",
                 },
-                transition: "all 0.3s ease",
               }}
               startIcon={<PhotoCameraRoundedIcon />}
             >
@@ -186,7 +181,7 @@ export const Home = () => {
               size="large"
               sx={{
                 color: "#ccc",
-                borderColor: "#555",
+                borderColor: "#666",
                 fontWeight: 500,
                 px: 5,
                 py: 1.5,
@@ -196,9 +191,8 @@ export const Home = () => {
                   backgroundColor: "#fff",
                   color: "#000",
                   borderColor: "#fff",
-                  boxShadow: "0 0 20px rgba(255,255,255,0.2)",
+                  boxShadow: "0 0 18px rgba(255,255,255,0.2)",
                 },
-                transition: "all 0.3s ease",
               }}
             >
               Contact Me
