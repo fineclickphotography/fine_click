@@ -3,7 +3,7 @@ import { Box, Container, Typography, Button, Stack, Paper } from "@mui/material"
 
 import babyBirthday from "../../assets/DSC01834-BNiwbCx4.jpg";
 import modelPhotoshoot from "../../assets/IMG_4323-Dxh5C1id.jpg";
-import marriagePhotoshoot from "../../assets/DSC02154-D7aGm7xC.jpg";
+import marriagePhotoshoot from "../../assets/DSC02154-D7aGm7xC-DVX4jGYR.jpg";
 
 export const Projects = () => {
   const openDrive = () => {
